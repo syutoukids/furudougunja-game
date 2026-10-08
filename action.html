@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#171d24">
+<title>フルドウグンジャー｜古道具ハント</title>
+<link rel="stylesheet" href="action.css">
+</head>
+<body>
+<canvas id="world" aria-label="3Dの古道具街。移動はWASD、Jで攻撃、Spaceで回避。"></canvas>
+<div id="loading">古道具街へ…<small>3Dシーンを準備しています</small></div>
+<div id="error" hidden></div>
+<div class="vignette"></div><div id="hurt"></div>
+<header id="hud" hidden>
+ <div class="vitals"><div class="hero-label"><span class="red-dot"></span><b>RED</b><span id="hp-text">100 / 100</span></div><div class="bar health"><i id="hp"></i></div><div class="bar stamina"><i id="stamina"></i></div><div class="status-line"><span>STAMINA</span><span id="heal-count">手当て × 2</span></div></div>
+ <div class="mission"><small id="phase">古道具街の調査</small><b id="objective">路地に出動しよう</b><span id="remaining"></span></div>
+ <button class="hud-btn" id="pause" title="Escでポーズ">Ⅱ</button>
+</header>
+<div id="enemy-hud" hidden><div><b id="enemy-name"></b><small id="enemy-state"></small></div><div class="bar enemy"><i id="enemy-hp"></i></div></div>
+<div id="toast" role="status"></div><div id="damage-layer"></div>
+<div id="combat-hint" hidden>赤い予兆を見たら回避。攻撃後の隙が反撃のチャンス。</div>
+<div id="bottom-hud" hidden>
+ <button class="equipped" id="open-cards"><span class="key">C</span><span><small>装備中の古道具</small><b id="equipped-name">装備なし</b></span><span id="collection-count">0 / 3</span></button>
+ <div class="actions"><button id="attack"><kbd>J</kbd>連撃</button><button id="heavy"><kbd>K</kbd>強攻撃</button><button id="dodge"><kbd>SPACE</kbd>回避</button><button id="skill"><kbd>E</kbd><span id="skill-label">古道具の力</span><small id="cooldown"></small></button><button id="heal"><kbd>R</kbd>手当て</button></div>
+ <div class="keyboard-help">WASD / 矢印：移動　Shift：走る　Q・F / 右ドラッグ：視点　Tab：ロックオン</div>
+</div>
+<div id="stick" hidden><div id="stick-knob"></div></div>
+<section class="screen" id="title">
+ <div class="title-content"><span class="eyebrow">FURUDOUGUNJAR / 3D ACTION ADVENTURE</span><h1>フルドウ<br><span>グンジャー</span></h1><div class="title-rule"></div><h2>古道具ハント</h2><p>その道具には、まだ力がある。<br>怪人に挑み、眠っていた古道具を取り戻そう。</p><button class="gold-button" id="start">レッド、出動！ <span>→</span></button><button class="sub-button" id="title-cards">古道具コレクション</button><small class="edition">戦闘試作版 · 1ステージ / 3種類の怪人<br>キャラクター・怪人は簡易3Dモデル</small></div>
+ <div class="title-caption"><b>RED</b><span>古いものの、その先へ。</span></div>
+</section>
+<section class="screen modal-screen" id="modal" hidden><div class="modal-panel"><div class="modal-head"><span class="eyebrow" id="modal-label"></span><button class="x-button" id="modal-close" aria-label="閉じる">×</button></div><h2 id="modal-title"></h2><p id="modal-text"></p><div id="modal-content"></div><div id="modal-actions"></div></div></section>
+<footer class="credit" id="credit">動画の世界観をもとにしたゲーム用オリジナルミッション</footer>
+<script>window.addEventListener('error',()=>{const e=document.getElementById('error');e.hidden=false;e.textContent='ゲームを読み込めませんでした。起動用ファイルから開き直してください。';document.getElementById('loading').hidden=true;});</script>
+<script type="module" src="action.mjs"></script>
+</body></html>
