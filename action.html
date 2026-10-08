@@ -30,6 +30,9 @@
 </section>
 <section class="screen modal-screen" id="modal" hidden><div class="modal-panel"><div class="modal-head"><span class="eyebrow" id="modal-label"></span><button class="x-button" id="modal-close" aria-label="閉じる">×</button></div><h2 id="modal-title"></h2><p id="modal-text"></p><div id="modal-content"></div><div id="modal-actions"></div></div></section>
 <footer class="credit" id="credit">動画の世界観をもとにしたゲーム用オリジナルミッション</footer>
-<script>window.addEventListener('error',()=>{const e=document.getElementById('error');e.hidden=false;e.textContent='ゲームを読み込めませんでした。起動用ファイルから開き直してください。';document.getElementById('loading').hidden=true;});</script>
-<script type="module" src="action.mjs"></script>
+<script type="module">
+function showError(){const e=document.getElementById('error');e.hidden=false;if(!e.textContent)e.textContent='ゲームを読み込めませんでした。起動用ファイルから開き直してください。';document.getElementById('loading').hidden=true;}
+window.addEventListener('error',showError);
+import('./action.mjs').catch(showError);
+</script>
 </body></html>

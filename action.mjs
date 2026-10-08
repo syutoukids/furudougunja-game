@@ -19,7 +19,7 @@ try{renderer=new THREE.WebGLRenderer({canvas:$('#world'),antialias:true,powerPre
 const touchDevice=matchMedia('(pointer:coarse)').matches;
 const touchLayout=()=>touchDevice||innerWidth<760;
 renderer.setPixelRatio(Math.min(devicePixelRatio,touchDevice?1.2:1.7));renderer.setSize(innerWidth,innerHeight);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.2;
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x9baeb0);scene.fog=new THREE.FogExp2(0xb9b7a0,.021);
 const camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,110);
